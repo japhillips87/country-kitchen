@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_07_145715) do
+ActiveRecord::Schema.define(version: 2020_05_07_154019) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.text "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "ingredients", force: :cascade do |t|
     t.text "amount"
@@ -26,12 +32,15 @@ ActiveRecord::Schema.define(version: 2020_05_07_145715) do
   end
 
   create_table "recipes", force: :cascade do |t|
-    t.text "title"
+    t.text "name"
     t.text "description"
     t.text "directions"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "category_id"
+    t.index ["category_id"], name: "index_recipes_on_category_id"
   end
 
   add_foreign_key "ingredients", "recipes"
+  add_foreign_key "recipes", "categories"
 end
