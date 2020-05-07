@@ -1,4 +1,4 @@
 class Ingredient < ApplicationRecord
-  validates_presence_of :amount, :unit, :name
+  validates_presence_of :amount, :name
   belongs_to :recipe
 end
