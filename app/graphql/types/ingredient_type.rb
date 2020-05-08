@@ -4,5 +4,11 @@ module Types
     field :amount, type: String, null: false
     field :unit, type: String, null: false
     field :name, type: String, null: false
+    field :full, type: String, null: false
+
+    def full
+      [object.amount, object.unit, object.name].compact
+        .reject(&:empty?).join(' ')
+    end
   end
 end
