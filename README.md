@@ -87,3 +87,18 @@ mutation {
  }
 }
 ```
+
+```
+{
+  recipe(name: "Southern Caramel Icing") {
+    name
+    description
+    ingredients {
+      amount
+      unit
+      name
+    }
+    directions
+  }
+}
+```
