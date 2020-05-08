@@ -1,7 +1,7 @@
 class Mutations::CreateRecipe < Mutations::BaseMutation
   argument :attributes, Types::RecipeAttributes, required: true
 
-  field :recipe, Types::RecipeType, null: false
+  field :recipe, Types::RecipeType, null: true
   field :errors, [String], null: false
 
   def resolve(attributes:)
